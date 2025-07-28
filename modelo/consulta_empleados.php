@@ -29,10 +29,8 @@
     <?php
         if(isset($_SESSION['username']))
         {
-            $query = "SELECT empleado.id_empleado, empleado.nombre_empleado, empleado.apellidos_empleados, departamento.nombre_departamento 
-            FROM empleado JOIN departamento ON empleado.id_departamento = departamento.id_departamento";
-
-            $resultado = mysqli_query($conexion, $query) or trigger_error("Error en la consulta: " . mysqli_error($conexion));
+            $query = "SELECT * From Empleado";
+            $resultado = mysqli_query($conexion, $query) or trigger_error("Error en la consulta: " .mysqli_error($conexion));
 
             //Encabezado de la tabla de resultados
             echo "<table border='1' align='center'>";
@@ -54,10 +52,10 @@
                         echo $fila['nombre_empleado'];
                     echo "</td>";
                     echo "<td>";
-                        echo $fila['apellidos_empleados'];
+                        echo $fila['apellidos_empleado'];
                     echo "</td>";
                     echo "<td>";
-                        echo $fila['nombre_departamento'];
+                        echo $fila['id_departamento'];
                     echo "</td>";
                 echo "</tr>";
             }
@@ -69,7 +67,5 @@
             header('location: ../index.php');
         }
     ?>
-
-<a href="../pagina_usuario.php?logout=1">volver</a>
 </body>
 </html>
